@@ -48,10 +48,17 @@ header ul li a, header ul li a:visited{
 #loader #loader-anim{
 	display: block;
 	position: absolute;
-	left: 0
+	left: 0;
 	top: 0;
-	height: 100%;
-	width: 39%;
+	height: 2px;
+	width: 0%;
+	background: red;
+	margin-top: 1px;
+	-webkit-transition: width .5s ease-out;
+}
+
+#loader #loader-anim:hover{
+	width: 100%;
 }
 
 #content{

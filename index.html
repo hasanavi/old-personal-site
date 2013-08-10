@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Hasan Azizul Haque - Mobile and web technology lover</title>
-	<base href="http://hasanavi.me">
+	<!-- <base href="http://hasanavi.me"> -->
 
 	<meta name="description" content="Hasan Azizul Haque Avi. Mobile and web technology lover">
 	<meta name="HandheldFriendly" content="True">
@@ -39,11 +39,11 @@
 		<!-- Add your site or application content here -->
 		<header>
 			<span class='message'>throw me anything related to mobile, i'll eat em..</span>
-			<ul>
+			<ul id='menu'>
 				<li><a href='/'>Home</a></li>
-				<li><a href='#'>Work</a></li>
-				<li><a href='#'>Labs</a></li>
-				<li><a href='#'>Hackaton</a></li>
+				<li id='work'><a href='#!work'>Work</a></li>
+				<li id='labs'><a href='#!labs'>Labs</a></li>
+				<li id='hackathon'><a href='#!hackathon'>Hackathon</a></li>
 			</ul> 
 		</header><!-- /header -->
 		<div id='loader'><span id='loader-anim'></span></div>
@@ -78,6 +78,7 @@
 
 	<script src="js/vendor/zepto.min.js"></script>
 	<script src="js/util.js"></script>
+	<script src="js/script.js"></script>
 
 	<script>
 	UTIL.hideUrl();

@@ -21,6 +21,6 @@ $(function(){
 		setTimeout(function(){
 			$('#loader-anim').hide();
 			$('#loader-anim').css({'width':'0','opacity':'0'});
-		},500);
+		},600);
 	}
 });

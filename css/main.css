@@ -22,6 +22,7 @@ header ul{
 	list-style: none;
 	float: right;
 	display: block;
+	padding: 0;
 	margin-right: 20px;
 }
 
@@ -81,9 +82,22 @@ footer{
 
 @media only screen and (max-width: 600px) {
     /* Style adjustments for viewports that meet the condition */
+    header span{
+    	font-size: 80%;
+    }
     header ul{
     	margin-top: 30px;
+    	float: left;
     }
+
+    #col-left{
+    	display: none;
+    }
+
+    #col-right{
+    	padding-left: 10px;
+    }
+
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),

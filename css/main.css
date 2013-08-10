@@ -12,6 +12,12 @@ header, footer{
 	display: block;	
 }
 
+header span{
+	display: block;
+	color: #FFF;
+	margin: 15px 0 0 10px;
+	float: left;
+}
 header ul{
 	list-style: none;
 	float: right;
@@ -36,6 +42,11 @@ header ul li a, header ul li a:visited{
 	height: auto;
 	clear: both;
 	display: block;
+}
+
+#content a,#content a:visited{
+	text-decoration: none;
+	color: #F86D18;
 }
 
 #col-left{

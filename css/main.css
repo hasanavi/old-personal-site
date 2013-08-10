@@ -121,6 +121,10 @@ footer{
     	padding-left: 10px;
     }
 
+    #loader{
+    	margin-top: 48px;
+    }
+
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),

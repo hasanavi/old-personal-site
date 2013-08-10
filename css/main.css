@@ -50,7 +50,7 @@ header ul li a, header ul li a:visited{
 	position: absolute;
 	left: 0;
 	top: 0;
-	height: 80%;
+	height: 90%;
 	width: 0%;
 	background: red;	
 	-webkit-transition: width .5s ease-out;

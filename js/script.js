@@ -1,18 +1,16 @@
 $(function(){
 	//Docuemnt ready function 
-	$('#menu li').click(function(){
-		var page = $(this).attr('id');
-		if((typeof page != 'undefined') && (page.length > 0)){
-			showLoader();
-			$.get('ajax-pages/'+page+'.html',function(res){
-				$('#col-right').html(res);
-				hideLoader();
-			});
-		}else{
-			showLoader();
-			hideLoader();			
-		}
-	});
+
+	$(window).on("hashchange",(function hashHandler(e){
+		var page = UTIL.getCleanHash().length == 0 ? 'home' : UTIL.getCleanHash();		
+		showLoader();
+		$.get('ajax-pages/'+page+'.html',function(res){
+			$('#col-right').html(res);
+			hideLoader();
+		});
+		
+		return hashHandler;
+	})());
 
 	function showLoader () {
 		$('#loader-anim').show();

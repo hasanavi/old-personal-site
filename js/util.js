@@ -291,6 +291,14 @@
             imgObj.src = rootDir + imgArr[i];    	
     };
 
+    UTIL.getCleanHash = function(){
+        return document.location.hash.replace('#!','');
+    }
+
+    UTIL.setHash = function(pageName){
+        document.location.hash = '#!' + pageName;
+    }
+
     UTIL.requestAnimFrame = (function(){
        return  window.requestAnimationFrame       ||
                 window.webkitRequestAnimationFrame ||

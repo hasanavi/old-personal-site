@@ -52,12 +52,10 @@ header ul li a, header ul li a:visited{
 	top: 0;
 	height: 90%;
 	width: 0%;
-	background: red;	
-	-webkit-transition: width .5s ease-out;
-}
-
-#loader #loader-anim:hover{
-	width: 100%;
+	opacity: 0;
+	background: red;
+	-webkit-transition: .5s ease-out;
+	-webkit-transition-property: opacity,width;
 }
 
 #content{

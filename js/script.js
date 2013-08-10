@@ -14,13 +14,13 @@ $(function(){
 
 	function showLoader () {
 		$('#loader-anim').show();
-		$('#loader-anim').css('width','100%');
+		$('#loader-anim').css({'width':'100%','opacity':'1'});
 	}
 
 	function hideLoader () {
 		setTimeout(function(){
-				$('#loader-anim').hide();
-				$('#loader-anim').css('width','0');
+			$('#loader-anim').hide();
+			$('#loader-anim').css({'width':'0','opacity':'0'});
 		},500);
 	}
 });

@@ -4,7 +4,6 @@
 # TEAM
 
     <Hasan Haque> -- <Technical Lead>
-    <Mike Monteith> -- <Developer>
 
 
 # TECHNOLOGY COLOPHON

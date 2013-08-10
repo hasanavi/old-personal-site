@@ -79,8 +79,11 @@ footer{
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 800px) {
+@media only screen and (max-width: 600px) {
     /* Style adjustments for viewports that meet the condition */
+    header ul{
+    	margin-top: 30px;
+    }
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),

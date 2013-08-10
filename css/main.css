@@ -54,8 +54,11 @@ header ul li a, header ul li a:visited{
 	width: 0%;
 	opacity: 0;
 	background: red;
-	-webkit-transition: .5s ease-out;
-	-webkit-transition-property: opacity,width;
+	-webkit-transition: all .5s ease-out;
+	-moz-transition: all .5s ease-out;
+	-o-transition: all .5s ease-out;
+	transition: all .5s ease-out;
+	
 }
 
 #content{

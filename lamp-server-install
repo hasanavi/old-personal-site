@@ -1,0 +1,474 @@
+<html><script id="tinyhippos-injected">if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<base href="http://www.mysql-apache-php.com/"><link type="text/css" rel="stylesheet" href="chrome-extension://cpngackimfmofbokmjmljamhdncknpmg/style.css"><script type="text/javascript" charset="utf-8" src="chrome-extension://cpngackimfmofbokmjmljamhdncknpmg/js/page_context.js"></script></head><body screen_capture_injected="true" cz-shortcut-listen="true"><div style="background:#fff;border:1px solid #999;margin:-1px -1px 0;padding:0;"></div><div style="position:relative">
+
+
+
+<title>Quick Linux Server w/ Apache+PHP+MySQL+MailServer+PhpMyAdmin+Webmin+FTP 
+Server+Webalizer+Firewall</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="styles.css" rel="stylesheet" type="text/css">
+<meta name="description" content="Tutorial Install Linux Web server with Apache, MYSQL and PHP with Webmin Server control panel">
+<meta name="keywords" content="linux server install Apache  MySQL  PHP PhpMyAdmin  Webalizer  Mail Server (Postfix/Dovecot)  SquirrelMail  FTP Server (VSFtp)  ClamAV (Antivirus)  Webmin  IPTables Firewall  PHP-MySQL  Apache Server Kits debian ubuntu linux">
+<style type="text/css">
+<!--
+.disc {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	background-color: #e5ecf9;
+	border: 1px solid #d5e8f9;
+}
+-->
+</style>
+
+
+
+<h1 class="header">Quick<font color="#FF0000"> Linux</font> Server Installation 
+   
+   </h1>
+<h2><a href="#apache"><font face="Times New Roman, Times, serif">Apache</font></a><font face="Times New Roman, Times, serif"> 
+  + <a href="#mysql">MySQL</a> + <a href="#php">PHP</a> + <a href="#phpmyadmin">PhpMyAdmin</a> 
+  + <a href="#webalizer">Webalizer</a> + <a href="#mailserver">Mail Server (Postfix/Dovecot)</a> 
+  + <a href="#squirrelmail">SquirrelMail</a> + <a href="#ftpserver">FTP Server 
+  (VSFtp)</a> + <a href="#clamav">ClamAV (Antivirus)</a> + <a href="#webmin">Webmin</a> 
+  + <a href="#iptables">IPTables Firewall</a> + <a href="#phpmysqlapachekits">PHP-MySQL-Apache 
+  Server Kits</a> </font></h2>
+<hr>
+
+
+
+<a href="http://twitter.com/olddocks"> </a>
+
+<h3 align="left">Build Your Own Web Server ~ <br>
+  Quick &amp; Easy Do it Yourself Installation ~ All within 24 hours !!!!</h3>
+  
+<ul>
+  <li>Apache 2 - Linux Web server</li>
+  <li>MySQL 5 - MySQL Database Server</li>
+  <li>PHP4/5 - PHP Scripting Language</li>
+  <li>phpMyAdmin - Web-based database admin software.</li>
+  <li>Webalizer - Website Traffic Analyzer</li>
+  <li>Mail Server - Postfix (MTA) with Dovecot IMAP/POP3 + Sasl Authentication</li>
+  <li>Squirrelmail - A web based email</li>
+  <li>VSFTP - A fast ftp server to upload files</li>
+  <li>Webmin - A freely available server control panel</li>
+  <li>ClamAV - Antivirus software.</li>
+  <li>A Firewall using IPtables.</li>
+</ul>
+<p>Note: <strong>L</strong>inux + <strong>A</strong>pache + <strong>M</strong>ySQL 
+  + <strong>P</strong>HP/Perl together commonly known as <strong>LAMP Server</strong>.</p>
+
+<p>First, let us prepare a system that has a minimum requirement of Debian/Ubuntu 
+  version of linux with atleast<strong> 256MB of RAM available</strong>.<strong> 
+  </strong>Anything less than this minimum ram will cause lot of problems since 
+  we are running a server along especially mysql and webmin requires lot of RAM 
+  to run properly. Mysql will give you this nasty error "cannot connect to 
+  mysql.sock" if you dont have enough memory in your server.</p>
+<p>I love debian/ubuntu based linux because of my enormous affinity towards this 
+  command apt-get. As a starter knowing this one command, It is so easy to install 
+  packages and you dont need to worry about package dependency and configuration. 
+  You need to buy a dedicated server or a VPS package if you want to setup your 
+  own server. If you want to experiment with the server and installation it is 
+  recommended to buy a vps package from various hosts. I prefer <a href="http://vpslink.com" target="asd">vpslink</a> 
+  because of their pricing. Believe it or not it is so easy to install and configure 
+  your server yourself eventhough you are new are to linux and dedicated/vps hosting.</p>
+<p>First download <a href="http://the.earth.li/%7Esgtatham/putty/latest/x86/putty.exe" target="asd">PuTTy</a> 
+  if you are accessing your server through SSH. Just enter the IP of your server 
+  with root login to access your host. As you probably know, <a href="#webmin">Webmin</a> 
+  is a freely available server control panel and we will setup this once we have 
+  completed the LAMP server and Mail Server. Webmin makes more easier for us to 
+  fine tune our linux box.</p>
+<p>Before proceeding to install, update the necessary packages with debian with 
+  this command.</p>
+<p class="box">apt-get install update</p>
+<h1>1. Installing Apache + PHP <a name="apache"></a></h1>
+<p>Apache is one of the most famous web server which runs on most linux based 
+  servers by <a href="http://www.webhostingsearch.com/" title="webhosting companies">webhosting</a> companies
+. With just few commands you can configure apache to run with PHP 4 or 
+  PHP 5.</p>
+<p>If you want to install PHP 4, just apt-get</p>
+<p class="box">apt-get install apache2 php4 libapache2-mod-php4 </p>
+<p>To install PHP5, just run the following on linux shell. Note that if you dont 
+  specify packages with '4', PHP5 will be automatically installed.</p>
+<p class="box">apt-get install apache2 php5 libapache2-mod-php5 </p>
+<p>Apache configuration file is located at: <strong>/etc/apache2/apache2.conf 
+  </strong> and your web folder is <strong>/var/www</strong></p>
+<p>To check whether php is installed and running properly, just create a <strong>test.php</strong> 
+  in your <strong>/var/www folder</strong> with phpinfo() function exactly as 
+  shown below.<a name="php"></a></p>
+<p class="box">nano /var/www/test.php</p>
+<p><strong># test.php</strong></p>
+<p class="box">&lt;?php phpinfo(); ?&gt; </p>
+<p>Point your browser to <strong>http://ip.address/test.php or http://domain/test.php</strong> 
+  and this should show all your php configuration and default settings. </p>
+<p>You can edit necessary values or setup virtual domains using apache configuration 
+  file. </p>
+<h3>Enabling GD Library with PHP</h3>
+<p>If you want to use CAPTCHA or for dynamic image generation with php scripts 
+  for image verification to stop SPAM or automated robots, then it is absolutely 
+  necessary to get php gd library installed with php. Here is the command</p>
+<p class="box">apt-get install php5-gd</p>
+<p>Thats it!! Point your browser to <strong>http://domain/test.php</strong> and 
+  the php configuration settings will show GD library will be enabled for PNG, 
+  GIF, JPG etc.</p>
+<h2>Enabling Mod Rewrite with .htaccess</h2>
+<p>Do you use mod-rewrite from apache to rewrite friendly URLs ?? This must be 
+  absolutely necessary for the rewrite module to get enabled in your apache, especially 
+  if your blog, forum script uses rewriting engine to generate friendly URLs in 
+  your site. Note that default apache2 installation does not come with mod-rewrite. 
+  Here is how you enable it. Issue the following command</p>
+<p class="box"># a2enmod rewrite</p>
+<p>Once you run this command, apache will tell you that this rewrite module is 
+  enabled. You can find mod_rewrite enabled and show up in your test.php file.</p>
+<p>I often experienced <strong>page not found 404 error</strong> with <strong>debian/ubuntu 
+  versions </strong>eventhough your apache runs with mod-rewrite. To fix this, 
+  you will need to edit the following file to make some changes.</p>
+<p class="box">nano /etc/apache2/sites-enabled/000-default</p>
+<p>Find the following and change <strong>AllowOverride</strong> from None to All</p>
+<p class="box">&lt;Directory /var/www/&gt;<br>
+  Options Indexes FollowSymLinks MultiViews<br>
+  AllowOverride <font color="#0000FF">All</font><br>
+  Order allow,deny<br>
+  allow from all<br>
+  # Uncomment this directive is you want to see apache2's<br>
+  # default start page (in /apache2-default) when you go to /<br>
+  #RedirectMatch ^/$ /apache2-default/<br>
+  &lt;/Directory&gt;</p>
+<p>Upload the <strong>.htaccess</strong> file to your server and restart apache. 
+  <strong>/etc/init.d/apache2 restart</strong> </p>
+<p><strong>Make sure your <font color="#CC0000">.htaccess file</font> has <font color="#0000FF">644</font> 
+  permission as otherwise you get permission denied error.</strong></p>
+<p><strong>NOTE: </strong>I have often experienced <strong>.htaccess remaining 
+  invisible or disappearing problem</strong> when i uploaded any dotted files 
+  in the server (like .htaccess .ftpquota). Actually FTP clients do write .htaccess 
+  file but they do not show up when you upload. This happened with me using VSFTP. 
+  Here is how <a href="#dotfix">you fix</a></p>
+<h1>2. Installing MySQL Database Server <a name="mysql"></a></h1>
+<p>Installing mysql database server is always necessary if you are running a database 
+  driven ecommerce site. Remember running mysql server to a fair extend requires 
+  atleast 256mb of RAM in your server. So unless you are running database driven 
+  sites you dont absolutely need mysql. The following commands will install mysql 
+  5 server and mysql 5 client.</p>
+<p class="box">apt-get install mysql-server mysql-client php5-mysql</p>
+<p>Note: If you have already installed <strong>php4</strong>, you should make 
+  a slight change like this.</p>
+<p class="box">apt-get install mysql-server mysql-client php4-mysql</p>
+<p>The configuration file of mysql is located at: <strong>/etc/mysql/my.cnf</strong></p>
+<h3><strong>Creating users to use MySQL and Changing Root Password</strong></h3>
+<p>By default mysql creates user as root and runs with no passport. You might 
+  need to change the root password. </p>
+<p><strong>To change Root Password</strong></p>
+<p class="box">mysql&gt; USE mysql;<br>
+  mysql&gt; UPDATE user SET Password=PASSWORD('new-password') WHERE user='root';<br>
+  mysql&gt; FLUSH PRIVILEGES;</p>
+<p><strong>To Create User</strong></p>
+<p>You must <strong>never use root password</strong>, so you might need to create 
+  a user to connect to mysql database for a PHP script. Alternatively you can 
+  add users to mysql database by using a control panel like <strong>webmin</strong> 
+  or <strong>phpMyAdmin</strong> to easily create or assign database permission 
+  to users. We will install <a href="#webmin">Webmin</a> and <a href="#phpmyadmin">phpmyadmin</a> 
+  during later once we complete basic mail LAMP installation.</p>
+<h1><strong> PhpMyAdmin Installation<a name="phpmyadmin"></a></strong></h1>
+<p>PhpMyAdmin is a nice web based database management and administration software 
+  and easy to install and configure under apache.<strong> </strong>Managing databases 
+  with tables couldnt be much simpler by using phpmyadmin.</p>
+<p>All you need to do is:</p>
+<p class="box">apt-get install phpmyadmin</p>
+<p>The phpmyadmin configuration file is located at: <strong>/etc/phpmyadmin</strong> 
+  folder.</p>
+<p><strong>To setup under apache all you need to do is include the following line 
+  in <font color="#0000FF">/etc/apache2/apache2.conf</font></strong></p>
+<p class="box">Include /etc/phpmyadmin/apache.conf </p>
+<p class="box">Now restart apache: /etc/init.d/apache2 restart</p>
+<p>Point your browser to: <strong>http://domain/phpmyadmin</strong></p>
+<p>Thats it!! MySQL and phpMyAdmin is Ready !!! Login with your mysql root password 
+  and create users to connect to database from your php script.</p>
+<h1>3. Mail Server Installation<a name="mailserver"></a></h1>
+<ul>
+  <li>Postfix (Mail Transfer Agent MTA)</li>
+  <li>Dovecot (IMAP/POP3 Server)</li>
+  <li>SASL Authentication with TLS (Authenticate before sending mail outside network 
+    in Outlook)</li>
+  <li>Squirrel Mail (Popular Web based Email)</li>
+</ul>
+<p>As a beginner to linux it took about almost a month for me for proper installation 
+  of mail server and fixing necessary problems. I had real nightmares to configure 
+  this and so i decided that my hardwork would be helpful to linux community.</p>
+<p><strong>Note:</strong> If you install Postfix/Dovecot mail server you will 
+  ONLY be able to send mail within your network. You can only send mail externally 
+  if you install SASL authentication with TLS. As otherwise you get nasty <strong>"Relay 
+  Access Denied</strong>" error.</p>
+<h2>3a. Install Postfix MTA (Mail Transfer Agent)</h2>
+<p>First install postfix package along with sasl with apt-get</p>
+<p class="box">apt-get install postfix postfix-tls libsasl2 sasl2-bin libsasl2-modules 
+  popa3d </p>
+<p>During installation, postfix will ask for few questions like name of 
+  server and answer those questions by entering your domain name and select <strong>Internet 
+  site</strong> for postfix. </p>
+<p>Postfix configuration file is located at:<strong>/etc/postfix/main.cf. 
+  </strong>You can edit this file using popular text editor <strong>nano /etc/postfix/main.cf</strong></p>
+<p>Start or Restart Postfix Server: </p>
+<p class="box">/etc/init.d/postfix restart<br>
+  /etc/init.d/postfix stop<br>
+  /etc/init.d/postfix start</p>
+<h2><strong>3b. Install Dovecot</strong></h2>
+<p>Dovecot is one of the popular POP3/IMAP server which needs MTA like Postfix 
+  to work properly. </p>
+<p class="box">apt-get install dovecot</p>
+<p>In some linux versions, the above might not work so you can install by 
+  specifying individual package names.</p>
+<p class="box">apt-get install dovecot-imapd dovecot-pop3d dovecot-common</p>
+<p>Dovecot configuration file is located at: <strong>/etc/dovecot/dovecot.conf</strong></p>
+<p class=""><strong>Before we proceed we need to make some changes with dovecot configuration 
+  file</strong>. Double check the following entries in the file if the values 
+  are entered properly.</p>
+<p class="box">nano /etc/dovecot/dovecot.conf <br>
+  <br>
+  # specify protocols = imap imaps pop3 pop3s<br>
+  protocols = <strong><font color="#0000FF">pop3 imap</font></strong><br>
+  # uncomment this and change to no. <br>
+  disable_plaintext_auth = <strong><font color="#0000FF">no</font></strong> <br>
+  pop3_uidl_format = <font color="#0000FF">%08Xu%08Xv</font><br>
+</p>
+<p class="">I have noticed that in some ubuntu versions, most of the above parameters 
+  are not specified. You will need to insert the values if not specified or left 
+  empty. If you dont uncomment and change disable_plaintext_auth to no, you will 
+  get <strong>"plain text authentication error"</strong> from outlook 
+  or mail clients.</p>
+<p>Now, create a user to test our pop3 mail with outlook:</p>
+<p class="box">adduser &lt;user_name&gt;</p>
+<p><strong>Caution: </strong>Always create a separate user to test your 
+  mail or ftp. DO NOT LOGIN WITH ROOT ACCESS.</p>
+<p>Restart Dovecot:</p>
+<p class="box">/etc/init.d/dovecot restart</p>
+<p>Now, you can use your outlook express to test whether your new mail server 
+  is working or not. Just enter username: &lt;user_name&gt; with password in outlook.</p>
+<p>Remember you will NOT be able to send email outside your network, you 
+  will be only be able to send within your domain or local network. If you attempt 
+  to send email you get nasty "relay access denied" error from outlook 
+  express. However, you should have no problems in receiving your email from outlook. 
+  Inorder to send email external email you will need to configure SASL authentication 
+  as described below.</p>
+<h3>3c. Configure SASL Authentication with TLS</h3>
+<p>SASL Configuration + TLS (Simple authentication security layer with transport 
+  layer security) used mainly to authenticate users before sending email to external 
+  server, thus restricting relay access. If your relay server is kept open, then 
+  spammers could use your mail server to send spam. It is very essential to protect 
+  your mail server from misuse.</p>
+<p> Let us set up SMTP authentication for our users with postfix and dovecot.</p>
+<p>Edit the postfix configuration file <strong>/etc/postfix/main.cf</strong> 
+  and enter the few lines to enable authentication of our users</p>
+<p class="box">smtpd_sasl_auth_enable = yes <br>
+  smtpd_sasl_local_domain = <strong><font color="#0000FF">yourdomain.com</font></strong><br>
+  smtpd_recipient_restrictions = permit_mynetworks,permit_sasl_authenticated,reject_unauth_destination 
+  <br>
+  smtpd_sasl_security_options = noanonymous </p>
+  
+<p>On the Dovecot side you also need to specify the dovecot authentication daemon 
+  socket. In this case we specify an absolute pathname. Refer to this postfix 
+  manual <a href="http://www.postfix.org/SASL_README.html" target="asd">here</a></p>
+<p>Edit <strong>/etc/dovecot/dovecot.conf </strong></p>
+<p>Look for the line that <strong>starts with <font color="#CC0000">auth default</font>, 
+  before that insert the lines below.</strong></p>
+<p class="box">auth default {<br>
+  mechanisms = plain login<br>
+  passdb pam {<br>
+  }<br>
+  userdb passwd {<br>
+  }<br>
+  socket listen {<br>
+  client {<br>
+  path = /var/spool/postfix/private/auth<br>
+  mode = 0660<br>
+  user = postfix<br>
+  group = postfix<br>
+  }<br>
+  }<br>
+  }</p>
+<p>Now, rename previous <strong>auth default</strong> to <strong>auth default2. 
+  </strong>If you dont rename this then dovecot server will give you error like 
+  multiple instances of auth default.</p>
+<p>Now restart all the components of mail server.</p>
+<p class="box">/etc/init.d/saslauthd restart<br>
+  /etc/init.d/postfix restart<br>
+  /etc/init.d/dovecot restart</p>
+<p>Test whether your mail server works or not with your outlook express. Configure 
+  a user with a user name &lt;user_name&gt; (without @domain) and <strong>make 
+  sure</strong> that you select <strong>my server requires authentication</strong>. 
+  Under settings select <strong>same as incoming mail server</strong></p>
+<h3><strong><img src="outlookauth.JPG" alt="Outgoint Mail Server - My Server Requires Authentication" width="235" height="65"></strong></h3>
+<h4><font color="#CC0000">NOTE: </font></h4>
+<h4><font color="#CC0000">1. If you dont enable My server requires authentication 
+  in outlook you cannot send emails to external recipients and you get <font color="#0000FF">relay 
+  access denied</font> error. </font></h4>
+<h4><font color="#CC0000">2. Do not use root login to login to your mail server.</font></h4>
+<h4><font color="#CC0000">3. Dont forget to create a new user before you authenticate 
+  using outlook.</font></h4>
+<h2>3d. Forwarding Mails</h2>
+<p>Ever wondered how to forward your mails especially if you are a webmaster managing 
+  number of sites. You might need to forward any email sent to your primary email 
+  address. Its that easy. Just create a .forward file on your home directory. 
+  Insert list of emails addresses separated by commas, where you want to get forwarded.</p>
+<p>Login as user and type</p>
+<p class="box">echo 'destination_email_address' &gt; .forward </p>
+<p>or you can use <strong>nano to create .forward file</strong>. Just <strong>Delete 
+  .forward file</strong> if you dont want any forwarding.</p>
+<h1> Installing Squirrel Web Mail <a name="squirrelmail"></a></h1>
+<p>Squirrel mail is one of the most popular web based email with very friendly 
+  interface. Squirrel mail works without mysql database very easy to install and 
+  configure under apache2..</p>
+<p><strong>Note:</strong> It is recommended to have <strong>apache and php installed</strong> 
+  before you install squirrelmail. </p>
+<p class="box">apt-get install squirrelmail</p>
+<p>Squirrelmail configuration file is located in: <strong>/etc/squirrelmail/</strong> 
+  folder. By default all settings are preloaded. </p>
+<p class="box"># Run squirrelmail configuration utility as ROOT<br>
+  /usr/sbin/squirrelmail-configure</p>
+<p> Now we want to <strong>setup to run under apache. </strong>Edit apache configuration 
+  file <strong>/etc/apache2/apache2.conf </strong> and insert the following line:</p>
+<p class="box">Include /etc/squirrelmail/apache.conf</p>
+<p>Thats it. Your webmail is ready !!!. <br>
+  Point your browser to: <strong>http://yourdomain/squirrelmail</strong></p>
+<p><strong>Create a separate local user and login as a new user.<br>
+  <br>
+  <font color="#CC0000">DO NOT LOGIN AS ROOT AND YOU WILL GET </font><font color="#0000FF">"ERROR: 
+  CONNECTION DROPPED"</font></strong></p>
+<h2>Mail Server Problems in Logs</h2>
+<p>Always refer to logs located in <strong>/var/log/mail.log</strong> so that 
+  you can identify what the problem is before you can troubleshoot.</p>
+<h1>4. Webmin - Server Control Panel<a name="webmin"></a></h1>
+<p>Webmin is a nice server control panel available free of charge. It is similar 
+  like cpanel or plesk to manage your server. <a href="http://www.webmin.com" target="s">Download</a> 
+  the latest version of webmin from the main site</p>
+<p class="box">wget http://downloadpath/webmin-x.x.xx.tar.gz<br>
+  tar xzf webmin-x.x.x.tar.gz<br>
+  cd /webmin-x.x.x<br>
+  ./setup.sh</p>
+<p>The installation program will ask series of questions and most values will 
+  be automatically set by default. </p>
+<p>Once done, point your browser to: <strong>http://ip.address:10000</strong> 
+  or <strong>http://www.domainname:10000 </strong></p>
+<p><strong>Login into your webmin and you can do almost anything with your server.</strong></p>
+<h1>5. Webalizer Installation<a name="webalizer"></a></h1>
+<p>Webalizer is a visitor statistics software shows you nice graphic based on 
+  visitors, hits and pageviews of your site. It is indeed very easy to configure 
+  and run webalizer under apache. Webalizer runs as a daily cron job to monitor 
+  your server stats.</p>
+<p class="box">apt-get install webalizer</p>
+<p class="box">Now edit the webalizer configuration file located at: /etc/webalizer.conf 
+  and locate a line with LogFile /var/log/apache/access.log.1 and change to the 
+  correct name access.log as shown below.</p>
+<p class="box">LogFile /var/log/apache2/access.log</p>
+<p>and the bin of webalizer is located at /usr/bin/webalizer which is automatically 
+  scheduled to run daily as cron job. </p>
+<p>To run webalizer manually.</p>
+<p class="box">/usr/bin/webalizer</p>
+<p>Point your browser to <strong>http://domain/webalizer</strong> and you must 
+  see some pretty nice visitor statistics of your site.</p>
+<h1><strong>6. Installing FTP Server (VSFTP)<a name="vsftp"></a></strong></h1>
+<p> You will need a simple ftp server to upload and download your web files. i 
+  specially like vsftp server because not only it is very easy to configure but 
+  also runs faster than other ftp peers with good connection speed.</p>
+<p class="box">apt-get install vsftpd</p>
+<p>Configuration file is located at:<strong> /etc/vsftpd.conf</strong></p>
+<p>Change the following settings in <strong>/etc/vsftpd.conf</strong> so that 
+  you allow local users and allow write using ftp.</p>
+<p class="box"># Uncomment this to allow local users to log in.<br>
+  local_enable=YES<br>
+  # Uncomment this to enable any form of FTP write command.<br>
+  write_enable=YES</p>
+<p> Before you connect using ftp client, you will need to create local users and 
+  group. Do not upload files using root.</p>
+<p class="box"># CD to /home/&lt;user&gt; and create a symbolic link to /var/www 
+  as this is the public html folder. <br>
+  ln -s /var/www www<br>
+  <br>
+  #change ownership /var/www to user<br>
+  chown -R &lt;user&gt; /var/www<br>
+  <br>
+  #Change to 755 permissions <br>
+  chmod -R 755 /var/www</p>
+<p>Now you can connect to ftp and upload files. Once you upload all necesarry 
+  files in the public html folder, make sure all the files have 755 permission 
+  as otherwise you will get permission denied/forbidden error from apache. </p>
+<h3>Enabling VSFTP to Show Dotted Files<a name="dotfix"></a></h3>
+<p>By default, vsftp does not show dotted files in the server, especially .htaccess, 
+  eventhough you have successfully uploaded the files. This could be frustrating 
+  especially if you are using .htaccess for authentication or rewriting friendly 
+  URLs. To fix this just add <strong>force_dot_files=YES</strong> in your vsftp 
+  configuration file <strong>/etc/vsftpd.conf</strong></p>
+<p class="box"># Activate directory messages - messages given to remote users when they<br>
+  # go into a certain directory.<br>
+  dirmessage_enable=YES<br>
+  <font color="#0000FF">force_dot_files=YES</font></p>
+<p>Restart the vsftp server <strong>/etc/init.d/vsftpd restart.</strong></p>
+<p><strong>Webmin Package:</strong> VSFTP also available as <a href="http://www.webmin.com/standard.html" target="s">webmin</a> 
+  package. You can easily change settings from webmin for vsftp.</p>
+<h1>7. ClamAV - Antivirus Software<a name="clamav"></a></h1>
+<p>Linux based systems are often vulnerable to trojans, worms and viruses. It 
+  is often to be on the safer side to scan your server using freely available 
+  ClamAV antivirus available for linux</p>
+<p class="box">apt-get install clamav</p>
+<p>To scan necessary files</p>
+<p class="box">clamscan -R /folders</p>
+<p>-R is recursive and is optional</p>
+<p>To update virus database:</p>
+<p class="box">freshclam</p>
+<p><strong>Running as Cron Daily Job</strong></p>
+<p>To run antivirus as a cron job (automatically scan daily) just run <strong>crontab 
+  -e </strong>from your command line. Then add the following line and save the 
+  file. </p>
+<p class="box">02 1 * * * root clamscan -R /var/www</p>
+<p>This will run the cron job daily @ 1.02 AM by scanning the public html. You 
+  can change the folder to whatever you want for mail etc.</p>
+<h1>8. Quick IP Tables Firewall<a name="iptables"></a></h1>
+<p>Without firewall there is no absolute security for your server. Atleast i would 
+  recommend a simple firewall that would employ packet filtering and block off 
+  unnecessary ports in your server using IP tables.</p>
+<p class="box">apt-get install iptables</p>
+<p>I found <a href="http://wiki.vpslink.com/index.php?title=HOWTO" target="qw"><strong>Quick 
+  n Dirty Firewall</strong></a> pretty interesting. You can copy and run the shell 
+  script to set up your quick firewall.</p>
+<p>Remember not to block important ports like <br>
+  21 (ftp) <br>
+  22 (SSH)<br>
+  23 (Telnet)<br>
+  25 110 (email)<br>
+  443 (SSL http or https)<br>
+  993 (imap ssl)<br>
+  995 (pop3 ssl)<br>
+  10000 (webmin)<br>
+  80 (http)</p>
+<h1>9. PHP*MySQL*Apache Server Kits<a name="phpmysqlapachekits"></a></h1>
+<p>Xampp Server for Windows/Linux - <strong><a href="http://www.apachefriends.org/" target="asd">http://www.apachefriends.org/</a></strong><br>
+  ApachePHPMySQL Project - <strong><a href="http://sourceforge.net/projects/apachephpmysql/" target="asdasda">http://sourceforge.net/projects/apachephpmysql/</a></strong> 
+  <br>
+  WAMP Server - <strong><a href="http://www.wampserver.com/en/" target="wqewq">http://www.wampserver.com/en/</a></strong><br>
+  Easy PHP Server - <strong><a href="http://www.easyphp.org/" target="xe">http://www.easyphp.org/</a></strong><br>
+  AppServ Server Kit - <strong><a href="http://www.appservnetwork.com/" target="qweqw">http://www.appservnetwork.com/</a></strong></p>
+<h1>10. Useful Reference</h1>
+<p>Debian Help - <a href="http://www.debianhelp.co.uk" target="asd"><strong>http://www.debianhelp.co.uk</strong></a><br>
+  VPS Link Resources: <strong><a href="http://wiki.vpslink.com" target="d">http://wiki.vpslink.com</a><br>
+  </strong>DNS Setup:<strong> </strong><a href="dns-tutorial.htm">Setup your Own 
+  Name Server with Directadmin</a>&nbsp;<br>
+  Article: <a href="fileupload-security.htm">Implementing PHP File Upload Security</a><br>
+  Article: <a href="apf-firewall.htm">Install APF Firewall in Linux Servers</a></p>
+
+
+
+
+  <p>
+
+
+</p>
+<p class="disc"><strong>Disclaimer:</strong> The information and content provided on this website 
+  is for reference and informational purpose only. We cannot guarantee for accuracy 
+  and completeness for any information or content published on this site. Use 
+  of the information and content on this site is at your own risk. We accept no 
+  responsibility for any loss or damage arising from the use of this website either 
+  directly or indirectly.<br>
+</p>
+
+
+
+
+</div></body></html>

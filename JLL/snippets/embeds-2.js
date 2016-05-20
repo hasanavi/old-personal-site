@@ -2,7 +2,7 @@
 
 	//$(function() {
 		var $surveyContainer = $('.survey-container'),
-			cssFile = 'https://rawgit.com/hasanavi/hasanavi.github.io/master/JLL/snippets/embed-style.css',
+			cssFile = 'https://rawgit.com/hasanavi/hasanavi.github.io/master/JLL/snippets/embed-style-1.css',
 			img = new Image(),
 			position = $surveyContainer.data('pos');
 

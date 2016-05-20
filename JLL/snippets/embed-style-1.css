@@ -2,6 +2,7 @@
 	background-color: #efefef !important;
 	border: 2px solid black;
 	border-radius: 10% 0 0 10%;
+	width: auto !important;
 }
 
 .survey-container:hover,
@@ -24,4 +25,11 @@
 .survey-container a:focus,
 .survey-container a:actve {
 	text-decoration: underline;
+}
+
+
+@media (min-width: 780px) {
+  .survey-container {
+  	width: 100px !important;
+  }
 }

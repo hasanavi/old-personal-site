@@ -1,0 +1,27 @@
+.survey-container {
+	background-color: #efefef !important;
+	border: 2px solid black;
+	border-radius: 10% 0 0 10%;
+}
+
+.survey-container:hover,
+.survey-container:focus,
+.survey-container:active {
+	background-color: #dedede !important;
+}
+
+.survey-container.left {
+	right: auto !important;
+	left: 0;
+	border-radius: 0 10% 10% 0;
+}
+
+.survey-container a {
+	text-decoration: none;
+}
+
+.survey-container a:hover,
+.survey-container a:focus,
+.survey-container a:actve {
+	text-decoration: underline;
+}
